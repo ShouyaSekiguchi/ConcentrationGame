@@ -1,0 +1,6 @@
+name: ConcentrationGame
+version: '1.0-SNAPSHOT'
+main: plugin.concentrationgame.Main
+api-version: '1.20'
+commands:
+  gameStart:
