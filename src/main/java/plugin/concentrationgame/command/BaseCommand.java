@@ -15,12 +15,12 @@ public abstract class BaseCommand implements CommandExecutor {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if(sender instanceof Player player) {
       try {
-        return onExeCutePlayerCommand(player, command, label, args);
+        return onExecutePlayerCommand(player, command, label, args);
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
     } else {
-      return onExeCuteNPCCommand(sender, command, label, args);
+      return onExecuteNPCCommand(sender, command, label, args);
     }
   }
 
@@ -34,7 +34,7 @@ public abstract class BaseCommand implements CommandExecutor {
    * @param args コマンド引数
    * @return 処理の実行有無
    */
-  public abstract boolean onExeCutePlayerCommand(Player player, Command command, String label, String[] args)
+  public abstract boolean onExecutePlayerCommand(Player player, Command command, String label, String[] args)
       throws IOException;
 
   /**
@@ -45,5 +45,5 @@ public abstract class BaseCommand implements CommandExecutor {
    * @param args コマンド引数
    * @return 処理の実行有無
    */
-  public abstract boolean onExeCuteNPCCommand(CommandSender sender, Command command, String label, String[] args);
+  public abstract boolean onExecuteNPCCommand(CommandSender sender, Command command, String label, String[] args);
 }
