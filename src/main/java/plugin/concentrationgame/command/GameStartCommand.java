@@ -46,7 +46,7 @@ public class GameStartCommand extends BaseCommand implements Listener {
 
 
   @Override
-  public boolean onExeCutePlayerCommand(Player player, Command command, String label, String[] args) {
+  public boolean onExecutePlayerCommand(Player player, Command command, String label, String[] args) {
     if (args.length == 1 && LIST.equals(args[0])) {
       sendPlayerScoreList(player);
       return false;
@@ -77,7 +77,7 @@ public class GameStartCommand extends BaseCommand implements Listener {
   }
 
   @Override
-  public boolean onExeCuteNPCCommand(CommandSender sender, Command command, String label,
+  public boolean onExecuteNPCCommand(CommandSender sender, Command command, String label,
       String[] args) {
     return false;
   }
@@ -136,18 +136,18 @@ public class GameStartCommand extends BaseCommand implements Listener {
 
   @EventHandler
   public void onInteractEntity(PlayerInteractEntityEvent e) {
-    Entity ClickEntity = e.getRightClicked();
+    Entity clickEntity = e.getRightClicked();
     Player player = e.getPlayer();
-    if(spawnEntityList.stream().noneMatch(entity -> entity.equals(ClickEntity))) {
+    if(spawnEntityList.stream().noneMatch(entity -> entity.equals(clickEntity))) {
       return;
     }
 
     if(!entitySelect) {
-      pairEntityArray[0] = ClickEntity;
+      pairEntityArray[0] = clickEntity;
       getPairNumber(0, player);
       entitySelect = true;
     } else {
-      pairEntityArray[1] = ClickEntity;
+      pairEntityArray[1] = clickEntity;
 
       if(pairEntityArray[0].equals(pairEntityArray[1])) {
         player.sendMessage("同じエンティティを選択しています。違うエンティティを選択してください。");
